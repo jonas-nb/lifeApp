@@ -3,21 +3,37 @@ import { MdWaterDrop } from "react-icons/md";
 import { FaBasketballBall } from "react-icons/fa";
 import { LuUtensils } from "react-icons/lu";
 import { RiBookShelfLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const icons = [
-    { icon: <MdWaterDrop size={24} />, label: "Hidratação" },
-    { icon: <FaBasketballBall size={24} />, label: "Exercício" },
-    { icon: <LuUtensils size={24} />, label: "Alimentação" },
-    { icon: <RiBookShelfLine size={24} />, label: "Registro do Dia" },
+    {
+      icon: <MdWaterDrop size={24} />,
+      label: "Hidratação",
+      path: "/water",
+    },
+    {
+      icon: <FaBasketballBall size={24} />,
+      label: "Exercício",
+      path: "/workout",
+    },
+    {
+      icon: <LuUtensils size={24} />,
+      label: "Alimentação",
+      path: "/food",
+    },
+    {
+      icon: <RiBookShelfLine size={24} />,
+      label: "Estudo",
+      path: "/study",
+    },
   ];
 
   return (
     <div
       style={{
-        width: "60px",
         height: "100vh",
-        background: "#98ffb2",
+        background: "#70e000",
         color: "#000",
         display: "flex",
         flexDirection: "column",
@@ -35,12 +51,12 @@ const Sidebar = () => {
         }}
       >
         {icons.map((item, index) => (
-          <a
+          <Link
             key={index}
-            href="#"
+            to={item.path}
             title={item.label}
             style={{
-              color: "#000",
+              color: "#000", // Changed from white to black for better contrast
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -48,6 +64,7 @@ const Sidebar = () => {
               height: "36px",
               borderRadius: "8px",
               transition: "all 0.2s",
+              textDecoration: "none",
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.backgroundColor = "#e4e4e480";
@@ -59,7 +76,7 @@ const Sidebar = () => {
             }}
           >
             {item.icon}
-          </a>
+          </Link>
         ))}
       </nav>
       <div
@@ -70,12 +87,20 @@ const Sidebar = () => {
           marginBottom: "1rem",
         }}
       >
-        <a href="#" title="Ajuda" style={{ color: "#000" }}>
+        <Link
+          to="/ajuda"
+          title="Ajuda"
+          style={{ color: "#000", textDecoration: "none" }}
+        >
           ?
-        </a>
-        <a href="#" title="Sair" style={{ color: "#000" }}>
+        </Link>
+        <Link
+          to="/sair"
+          title="Sair"
+          style={{ color: "#000", textDecoration: "none" }}
+        >
           ⏻
-        </a>
+        </Link>
       </div>
     </div>
   );
