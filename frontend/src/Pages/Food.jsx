@@ -31,6 +31,7 @@ const Food = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Meals saved:", meals);
+
     // You can add a toast or feedback here later
     alert("Meals saved successfully!");
   };
@@ -38,7 +39,7 @@ const Food = () => {
   return (
     <div className="w-full h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full flex flex-col max-w-md">
-        <h1 className="text-base border border-red-500 font-bold text-center text-gray-800 font-mono">
+        <h1 className="text-xl font-bold text-center text-gray-800 font-mono mb-9">
           🍽️ Food Tracker
         </h1>
 
@@ -49,7 +50,11 @@ const Food = () => {
             </legend>
 
             <div className="flex flex-col gap-4 mb-6">
-              <label className="flex items-center gap-3">
+              <label
+                className={`flex items-center gap-3 ${
+                  meals.breakfast ? "line-through text-gray-500" : ""
+                }`}
+              >
                 <input
                   type="checkbox"
                   name="meal"
@@ -63,7 +68,11 @@ const Food = () => {
                 </span>
               </label>
 
-              <label className="flex items-center gap-3">
+              <label
+                className={`flex items-center gap-3 ${
+                  meals.lunch ? "line-through text-gray-500" : ""
+                }`}
+              >
                 <input
                   type="checkbox"
                   name="meal"
@@ -77,7 +86,11 @@ const Food = () => {
                 </span>
               </label>
 
-              <label className="flex items-center gap-3">
+              <label
+                className={`flex items-center gap-3 ${
+                  meals.dinner ? "line-through text-gray-500" : ""
+                }`}
+              >
                 <input
                   type="checkbox"
                   name="meal"
